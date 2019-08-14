@@ -1,20 +1,20 @@
 language: php
-
 php:
-  - '7.3'
-
+- '7.3'
 install:
-  - composer install
-
+- composer install
 services:
-  - docker
-
+- docker
 before_script:
-  - cp .env.travis .env
-
+- cp .env.travis .env
 script:
-  - make build
-  - docker ps -a
-  - docker exec -it laravel-www make generate-key
-  - docker exec -it laravel-www make lint
-  - docker exec -it laravel-www make test
+- make build
+- docker ps -a
+- docker exec -it laravel-www make generate-key
+- docker exec -it laravel-www make lint
+- docker exec -it laravel-www make test
+deploy:
+  provider: heroku
+  api_key:
+    secure: JByXsvnT7zF9Jy/PjCAMpzYbMpFf/fxXvb1hNkf00mIUfUNhc/LP0mlAz7ZfiCc0SMhUhcotVaNT5m4ZsCxed9QLmK389wq6Z0aOLNnzGWBjn4PcOWf3tC80TrrUHUADQoOTF3ytgQ70oaETo3ppxIZLCv1ctWL5zh+dcVgOklzjGTNtNkju1MkIXiQfhOwr6LbmOjU/kqyU+79y2+CSPWhqi5oyFGkFDR3NWp1KirdkV14fAS28cdSwr6RCI9a6DUcEgS0WhouHeeUQNpmLAyDUNR9xkukun8cjR2zmQYeurklY7SQfwk1kExt7DHdfxr/Kymu/a509uIwNacaNymSgm/jx4GR/PW0SvPy5Fig90K1s/O5Dp3a+P87fJ94ILHB25ogZs9iynuCh2kWzxoLIWtli/2ryCblE/sqgZd0LS5cKXA8FG9tXQpPVb1aA0kEolaZDqDUqVvObm6mI5v23OVDaNHJvU6rcxpYnAIpuJTt8GtJVjMc7g8PdixZDyu8wne0JfuPqRXrNB1lDEg9mR01n373QJIRh5Q+p7QJVurHZ7POJaOA3QTwkZJkTy25K44mgZqEfcho6YGBCBGrIsKHNnNIcQSvvVu0Ipo7JPU2IC8oenLdIpjkCYUcwQ7o1vIqfNARIjPnWuNymJAAzkmdN+ek69HrKvVp38ig=
+  app: docker-laravel-ci
