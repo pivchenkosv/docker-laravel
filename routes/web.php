@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    \App\Jobs\ExampleJob::dispatch();
+    return view('welcome');
 });
