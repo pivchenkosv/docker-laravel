@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     {
 //         $schedule->command('inspire')
 //                  ->hourly();
-        $schedule->job(ExampleJob::class)->everyMinute();
+        $schedule->job(new ExampleJob())->everyMinute();
     }
 
     /**
