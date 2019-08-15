@@ -1,0 +1,16 @@
+setup:
+  addons:
+    - plan: heroku-postgresql
+      as: DATABASE
+build:
+  docker:
+    web: docker/Dockerfile
+    worker: docker/Dockerfile
+  config:
+    APP_ENV: production
+release:
+  command:
+    - ./docker/worker.sh
+  image: worker
+run:
+  worker: ./docker/worker.sh
