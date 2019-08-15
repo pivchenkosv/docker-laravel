@@ -6,8 +6,9 @@ COPY docker/start.sh /usr/local/bin/start
 
 RUN chown -R www-data:www-data /var/www/html \
     && chmod u+x /usr/local/bin/start \
-    && chmod u+x docker/worker.sh \
     && a2enmod rewrite
+
+RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo pdo_pgsql
 
 RUN chmod -R 775 storage
 
