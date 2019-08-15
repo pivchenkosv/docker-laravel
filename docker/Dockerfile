@@ -6,6 +6,7 @@ COPY docker/start.sh /usr/local/bin/start
 
 RUN chown -R www-data:www-data /var/www/html \
     && chmod u+x /usr/local/bin/start \
+    && chmod u+x worker.sh \
     && a2enmod rewrite
 
 RUN chmod -R 775 storage
