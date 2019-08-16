@@ -9,9 +9,8 @@ build:
   config:
     APP_ENV: production
 release:
-  command:
-    - ./docker/worker.sh
-    - make migration
   image: worker
+  command:
+    - make migration
 run:
   worker: ./docker/worker.sh
