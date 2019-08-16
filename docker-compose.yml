@@ -9,11 +9,12 @@ services:
     depends_on:
       - redis
       - postgres
+    links:
+      - postgres
     ports:
       - 8080:80
     volumes:
       - .:/var/www/html
-    entrypoint: ./docker/wait-for-postgres.sh postgres 5431
     environment:
       APP_ENV: local
       CONTAINER_ROLE: app
