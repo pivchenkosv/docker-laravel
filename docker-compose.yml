@@ -9,8 +9,6 @@ services:
     depends_on:
       - redis
       - postgres
-    links:
-      - postgres
     ports:
       - 8080:80
     volumes:
@@ -24,7 +22,7 @@ services:
       REDIS_HOST: redis
       DB_CONNECTION: pgsql
       DB_HOST: postgres
-      DB_PORT: 5431
+      DB_PORT: 5432
       DB_DATABASE: postgres
       DB_USERNAME: postgres
       DB_PASSWORD: secret
@@ -75,7 +73,7 @@ services:
       - POSTGRES_PASSWORD=secret
       - POSTGRES_DB=postgres
     ports:
-      - 5431:5431
+      - 5432:5432
 
 #  mysql:
 #    container_name: laravel-mysql
