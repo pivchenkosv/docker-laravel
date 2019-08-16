@@ -13,6 +13,7 @@ services:
       - 8080:80
     volumes:
       - .:/var/www/html
+    entrypoint: ./docker/wait-for-postgres.sh postgres 5432
     environment:
       APP_ENV: local
       CONTAINER_ROLE: app
